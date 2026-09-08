@@ -356,6 +356,7 @@
     padding:26px 24px;
     background:var(--panel);
     border:1px solid var(--border);
+    border-top:3px solid var(--border);
     border-radius:16px;
     box-shadow:var(--shadow-sm);
   }
@@ -366,6 +367,27 @@
     margin-bottom:16px;
     color:var(--primary);
   }
+  /* one palette hue per topic — subtle tint, still cohesive */
+  .skills-grid > .skill-col:nth-child(1){
+    background:color-mix(in srgb, var(--primary) 8%, var(--panel));
+    border-color:color-mix(in srgb, var(--primary) 22%, var(--border));
+    border-top-color:var(--primary);
+  }
+  .skills-grid > .skill-col:nth-child(1) h3{ color:var(--primary); }
+
+  .skills-grid > .skill-col:nth-child(2){
+    background:color-mix(in srgb, var(--secondary) 8%, var(--panel));
+    border-color:color-mix(in srgb, var(--secondary) 24%, var(--border));
+    border-top-color:var(--secondary);
+  }
+  .skills-grid > .skill-col:nth-child(2) h3{ color:var(--secondary); }
+
+  .skills-grid > .skill-col:nth-child(3){
+    background:color-mix(in srgb, var(--accent) 13%, var(--panel));
+    border-color:color-mix(in srgb, var(--accent) 30%, var(--border));
+    border-top-color:var(--accent);
+  }
+  .skills-grid > .skill-col:nth-child(3) h3{ color:color-mix(in srgb, var(--accent) 58%, var(--text)); }
   .skill-list{ list-style:none; }
   .skill-list li{
     padding:11px 0;
