@@ -4,23 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Azimatul Matsniya — Business Intelligence Engineer</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%230E1F1C'/%3E%3Ctext x='20' y='27' text-anchor='middle' font-family='Georgia, serif' font-size='18' font-weight='600' fill='%23F7F5F0'%3EA%3Ctspan fill='%23E8A33D'%3EM%3C/tspan%3E%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Portfolio of Azimatul Matsniya — Business Intelligence Engineer specializing in Power BI, Tableau, SQL and data pipelines.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23F0603A'/%3E%3Ctext x='20' y='27' text-anchor='middle' font-family='Georgia, serif' font-size='18' font-weight='700' fill='%23FFFFFF'%3EA%3Ctspan fill='%23FFCB47'%3EM%3C/tspan%3E%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  /* Set theme before first paint to avoid a flash */
+  (function(){
+    try{
+      var t = localStorage.getItem('am-theme');
+      if(!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    }catch(e){ document.documentElement.setAttribute('data-theme','light'); }
+  })();
+</script>
 <style>
+  /* ============ CHEERFUL LIGHT (default) ============ */
   :root{
-    --bg: #0E1F1C;
-    --bg-alt: #142B26;
-    --panel: #1A3630;
-    --border: #3D5A54;
-    --paper: #F7F5F0;
-    --sage: #C4D6D1;
-    --sage-dim: #8FA8A2;
-    --amber: #E8A33D;
-    --amber-dim: #C4863016;
-    --serif: 'Fraunces', serif;
-    --sans: 'Inter', sans-serif;
+    --bg:#FFFBF5;
+    --bg-alt:#FFF1E3;
+    --panel:#FFFFFF;
+    --border:#F1E1CE;
+    --text:#2C2740;
+    --text-soft:#5C556F;
+    --text-dim:#948DA6;
+    --primary:#F0603A;          /* coral-orange */
+    --primary-strong:#D9481F;
+    --primary-contrast:#FFFFFF;
+    --secondary:#0FA594;        /* teal */
+    --accent:#F5A623;           /* sunny yellow */
+    --nav-bg:rgba(255,251,245,0.85);
+    --chart-a:#F0603A;
+    --chart-b:#F5A623;
+    --shadow-sm:0 1px 2px rgba(44,39,64,.07);
+    --shadow-lg:0 14px 46px rgba(240,96,58,.12);
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* ============ CHEERFUL DARK ============ */
+  :root[data-theme="dark"]{
+    --bg:#171531;
+    --bg-alt:#1F1C40;
+    --panel:#262249;
+    --border:#3A3563;
+    --text:#F5F2FF;
+    --text-soft:#C1BBDF;
+    --text-dim:#8B84AC;
+    --primary:#FF7A54;
+    --primary-strong:#FF9576;
+    --primary-contrast:#1B1836;
+    --secondary:#2DD4BF;
+    --accent:#FFCB47;
+    --nav-bg:rgba(23,21,49,0.82);
+    --chart-a:#FF7A54;
+    --chart-b:#FFCB47;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+    --shadow-lg:0 18px 52px rgba(0,0,0,.38);
+  }
+
+  /* No-JS fallback: honor the OS preference */
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#171531; --bg-alt:#1F1C40; --panel:#262249; --border:#3A3563;
+      --text:#F5F2FF; --text-soft:#C1BBDF; --text-dim:#8B84AC;
+      --primary:#FF7A54; --primary-strong:#FF9576; --primary-contrast:#1B1836;
+      --secondary:#2DD4BF; --accent:#FFCB47;
+      --nav-bg:rgba(23,21,49,0.82);
+      --chart-a:#FF7A54; --chart-b:#FFCB47;
+      --shadow-sm:0 1px 2px rgba(0,0,0,.35);
+      --shadow-lg:0 18px 52px rgba(0,0,0,.38);
+    }
   }
 
   *{ margin:0; padding:0; box-sizing:border-box; }
@@ -29,19 +84,23 @@
 
   body{
     background:var(--bg);
-    color:var(--paper);
+    color:var(--text);
     font-family:var(--sans);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    transition:background .3s ease, color .3s ease;
   }
 
   a{ color:inherit; text-decoration:none; }
 
   :focus-visible{
-    outline:2px solid var(--amber);
+    outline:2px solid var(--primary);
     outline-offset:3px;
+    border-radius:2px;
   }
+
+  section[id]{ scroll-margin-top:84px; }
 
   .wrap{
     max-width:1080px;
@@ -54,17 +113,19 @@
     position:fixed;
     top:0; left:0; right:0;
     z-index:100;
-    background:rgba(14,31,28,0.86);
+    background:var(--nav-bg);
     backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
     border-bottom:1px solid var(--border);
   }
   .nav-inner{
     max-width:1080px;
     margin:0 auto;
-    padding:18px 32px;
+    padding:16px 32px;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:16px;
   }
   .nav-brand{
     display:flex;
@@ -72,9 +133,10 @@
     gap:12px;
   }
   .logo-mark{
-    width:36px;
-    height:36px;
+    width:34px;
+    height:34px;
     flex-shrink:0;
+    color:var(--text);
   }
   .nav-name{
     font-family:var(--serif);
@@ -82,48 +144,107 @@
     font-weight:500;
     letter-spacing:0.01em;
   }
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:26px;
+  }
   .nav-links{
     display:flex;
-    gap:32px;
+    gap:28px;
     list-style:none;
     font-size:0.92rem;
-    color:var(--sage);
+    color:var(--text-soft);
   }
   .nav-links a{
     position:relative;
     padding-bottom:4px;
     transition:color .2s ease;
   }
-  .nav-links a:hover{ color:var(--paper); }
+  .nav-links a:hover{ color:var(--text); }
   .nav-links a::after{
     content:'';
     position:absolute;
     left:0; bottom:0;
     width:0%;
-    height:1px;
-    background:var(--amber);
+    height:2px;
+    border-radius:2px;
+    background:var(--primary);
     transition:width .25s ease;
   }
   .nav-links a:hover::after{ width:100%; }
+
+  .nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .icon-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    height:38px;
+    padding:0 12px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:var(--panel);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:0.82rem;
+    font-weight:500;
+    cursor:pointer;
+    transition:border-color .2s ease, transform .15s ease, background .2s ease;
+  }
+  .icon-btn:hover{ border-color:var(--primary); transform:translateY(-1px); }
+  .icon-btn svg{ width:17px; height:17px; }
+  .icon-btn.square{ width:38px; padding:0; }
+
+  .icon-sun{ display:none; }
+  :root[data-theme="dark"] .icon-sun{ display:block; }
+  :root[data-theme="dark"] .icon-moon{ display:none; }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .icon-sun{ display:block; }
+    :root:not([data-theme="light"]) .icon-moon{ display:none; }
+  }
+
   .nav-toggle{ display:none; }
 
   /* ---------- HERO ---------- */
   header.hero{
-    padding:172px 0 96px;
+    padding:168px 0 92px;
     position:relative;
+  }
+  header.hero::before{
+    content:'';
+    position:absolute;
+    top:60px; right:-140px;
+    width:420px; height:420px;
+    background:radial-gradient(circle at center, var(--primary) 0%, transparent 68%);
+    opacity:.14;
+    pointer-events:none;
+    z-index:0;
   }
   .hero-grid{
     display:grid;
     grid-template-columns:1.5fr 1fr;
     gap:56px;
     align-items:end;
+    position:relative;
+    z-index:1;
   }
   .kicker{
-    font-size:0.95rem;
-    color:var(--amber);
-    font-family:var(--serif);
-    font-style:italic;
-    margin-bottom:18px;
+    display:inline-block;
+    font-size:0.8rem;
+    color:var(--primary-strong);
+    background:color-mix(in srgb, var(--primary) 14%, transparent);
+    font-family:var(--sans);
+    font-weight:600;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:6px 12px;
+    border-radius:999px;
+    margin-bottom:22px;
   }
   h1.hero-title{
     font-family:var(--serif);
@@ -131,74 +252,76 @@
     font-size:clamp(2.6rem, 5.4vw, 4.4rem);
     line-height:1.06;
     letter-spacing:-0.01em;
-    max-width:12ch;
+    max-width:13ch;
   }
+  h1.hero-title .accent{ color:var(--primary); }
   .hero-role{
     margin-top:22px;
     font-size:1.15rem;
-    color:var(--sage);
+    color:var(--text-soft);
     max-width:46ch;
   }
   .hero-desc{
-    margin-top:20px;
+    margin-top:18px;
     font-size:1rem;
-    color:var(--sage-dim);
+    color:var(--text-dim);
     max-width:52ch;
   }
   .hero-cta{
     display:flex;
-    gap:16px;
-    margin-top:36px;
+    gap:14px;
+    margin-top:34px;
     flex-wrap:wrap;
   }
   .btn{
     display:inline-flex;
     align-items:center;
     gap:8px;
-    padding:13px 24px;
+    padding:13px 22px;
     font-size:0.92rem;
-    font-weight:500;
-    border-radius:2px;
+    font-weight:600;
+    border-radius:12px;
     transition:all .2s ease;
     border:1px solid transparent;
+    cursor:pointer;
+    font-family:var(--sans);
   }
+  .btn svg{ width:16px; height:16px; }
   .btn-primary{
-    background:var(--amber);
-    color:var(--bg);
+    background:var(--primary);
+    color:var(--primary-contrast);
+    box-shadow:var(--shadow-lg);
   }
-  .btn-primary:hover{
-    background:#f0b25c;
-  }
+  .btn-primary:hover{ background:var(--primary-strong); transform:translateY(-2px); }
   .btn-outline{
     border-color:var(--border);
-    color:var(--paper);
+    color:var(--text);
+    background:var(--panel);
   }
-  .btn-outline:hover{
-    border-color:var(--sage);
-  }
+  .btn-outline:hover{ border-color:var(--primary); transform:translateY(-2px); }
 
   .hero-stats{
     display:flex;
     flex-direction:column;
-    gap:26px;
-    border-left:1px solid var(--border);
-    padding-left:28px;
+    gap:24px;
+    border-left:3px solid var(--primary);
+    padding-left:26px;
   }
   .stat-num{
     font-family:var(--serif);
     font-size:2.1rem;
-    color:var(--amber);
+    color:var(--primary);
     line-height:1;
   }
   .stat-label{
     margin-top:6px;
     font-size:0.85rem;
-    color:var(--sage-dim);
+    color:var(--text-dim);
     max-width:22ch;
   }
 
   section{
-    padding:104px 0;
+    padding:100px 0;
     border-top:1px solid var(--border);
   }
 
@@ -206,11 +329,14 @@
     display:grid;
     grid-template-columns:1fr 1.6fr;
     gap:40px;
-    margin-bottom:56px;
+    margin-bottom:52px;
   }
   .section-label{
-    font-size:0.85rem;
-    color:var(--sage-dim);
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--secondary);
     font-family:var(--sans);
   }
   h2.section-title{
@@ -224,29 +350,28 @@
   .skills-grid{
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:0;
-    border-top:1px solid var(--border);
+    gap:18px;
   }
   .skill-col{
-    padding:32px 28px;
-    border-right:1px solid var(--border);
+    padding:26px 24px;
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:16px;
+    box-shadow:var(--shadow-sm);
   }
-  .skill-col:last-child{ border-right:none; }
   .skill-col h3{
     font-family:var(--serif);
     font-weight:500;
     font-size:1.15rem;
-    margin-bottom:20px;
-    color:var(--amber);
+    margin-bottom:16px;
+    color:var(--primary);
   }
-  .skill-list{
-    list-style:none;
-  }
+  .skill-list{ list-style:none; }
   .skill-list li{
     padding:11px 0;
-    border-bottom:1px solid rgba(61,90,84,0.5);
+    border-bottom:1px solid var(--border);
     font-size:0.96rem;
-    color:var(--sage);
+    color:var(--text-soft);
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -260,29 +385,33 @@
     width:20px;
     height:20px;
     flex-shrink:0;
+    color:var(--text-soft);
   }
   .skill-list li:last-child{ border-bottom:none; }
   .skill-level{
-    font-size:0.78rem;
-    color:var(--sage-dim);
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--secondary);
+    background:color-mix(in srgb, var(--secondary) 12%, transparent);
+    padding:3px 9px;
+    border-radius:999px;
   }
 
   /* ---------- EXPERIENCE ---------- */
-  .timeline{
-    display:flex;
-    flex-direction:column;
-  }
+  .timeline{ display:flex; flex-direction:column; }
   .tl-item{
     display:grid;
     grid-template-columns:200px 1fr;
     gap:40px;
-    padding:36px 0;
+    padding:34px 0;
     border-top:1px solid var(--border);
   }
   .tl-item:first-child{ border-top:none; }
   .tl-date{
-    font-size:0.88rem;
-    color:var(--sage-dim);
+    font-size:0.82rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    color:var(--primary);
     padding-top:4px;
   }
   .tl-role{
@@ -292,28 +421,26 @@
     margin-bottom:6px;
   }
   .tl-org{
-    font-size:0.95rem;
-    color:var(--amber);
+    font-size:0.92rem;
+    color:var(--secondary);
+    font-weight:500;
     margin-bottom:14px;
   }
   .tl-desc{
-    color:var(--sage);
+    color:var(--text-soft);
     font-size:0.97rem;
     max-width:62ch;
   }
-  .tl-desc ul{
-    margin-top:10px;
-    padding-left:18px;
-  }
+  .tl-desc ul{ margin-top:10px; padding-left:18px; }
   .tl-desc li{ margin-bottom:6px; }
 
   /* ---------- PROJECTS ---------- */
   .project{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:56px;
+    gap:52px;
     align-items:center;
-    padding:56px 0;
+    padding:52px 0;
     border-top:1px solid var(--border);
   }
   .project:first-child{ border-top:none; }
@@ -323,14 +450,33 @@
   .project-visual{
     background:var(--panel);
     border:1px solid var(--border);
-    border-radius:2px;
-    aspect-ratio:4/3;
-    padding:28px;
+    border-radius:18px;
+    aspect-ratio:16/11;
+    padding:26px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
     position:relative;
     overflow:hidden;
+    box-shadow:var(--shadow-lg);
+  }
+  .project-visual.is-image{ padding:0; background:var(--bg-alt); }
+  .project-visual.is-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+  }
+  .project-visual.is-image .project-tag{
+    position:absolute;
+    top:12px; left:12px;
+    margin:0;
+    background:var(--panel);
+    color:var(--text-soft);
+    padding:5px 11px;
+    border-radius:999px;
+    box-shadow:var(--shadow-sm);
   }
   .mini-chart{
     display:flex;
@@ -340,23 +486,23 @@
   }
   .mini-chart span{
     flex:1;
-    background:linear-gradient(to top, var(--amber), #f0c98a);
-    border-radius:1px 1px 0 0;
-    opacity:0.85;
+    background:linear-gradient(to top, var(--chart-a), var(--chart-b));
+    border-radius:3px 3px 0 0;
   }
   .chart-labels{
     display:flex;
     justify-content:space-between;
     font-size:0.72rem;
-    color:var(--sage-dim);
+    color:var(--text-dim);
     margin-top:10px;
   }
   .project-tag{
-    font-size:0.78rem;
-    color:var(--sage-dim);
-    letter-spacing:0.02em;
+    font-size:0.74rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--text-dim);
   }
-
   .project-title{
     font-family:var(--serif);
     font-size:1.6rem;
@@ -364,27 +510,31 @@
     margin-bottom:14px;
   }
   .project-text p{
-    color:var(--sage);
+    color:var(--text-soft);
     font-size:0.97rem;
-    margin-bottom:18px;
+    margin-bottom:16px;
   }
+  .project-link{
+    color:var(--primary);
+    font-weight:600;
+    border-bottom:2px solid color-mix(in srgb, var(--primary) 35%, transparent);
+    transition:border-color .2s ease;
+  }
+  .project-link:hover{ border-color:var(--primary); }
   .project-meta{
     display:flex;
     gap:20px;
     flex-wrap:wrap;
-    margin-top:20px;
-    padding-top:20px;
+    margin-top:18px;
+    padding-top:18px;
     border-top:1px solid var(--border);
   }
-  .meta-item{
-    font-size:0.82rem;
-    color:var(--sage-dim);
-  }
+  .meta-item{ font-size:0.82rem; color:var(--text-dim); }
   .meta-item strong{
     display:block;
-    color:var(--paper);
+    color:var(--text);
     font-size:0.95rem;
-    font-weight:500;
+    font-weight:600;
   }
 
   /* ---------- CONTACT ---------- */
@@ -402,8 +552,8 @@
     max-width:14ch;
   }
   .contact-desc{
-    margin-top:20px;
-    color:var(--sage);
+    margin-top:18px;
+    color:var(--text-soft);
     max-width:48ch;
   }
   .contact-list{
@@ -416,28 +566,39 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:16px;
   }
   .contact-list a{
-    color:var(--paper);
+    color:var(--text);
     font-size:0.98rem;
     transition:color .2s;
   }
-  .contact-list a:hover{ color:var(--amber); }
+  .contact-list a:hover{ color:var(--primary); }
   .contact-label{
-    font-size:0.82rem;
-    color:var(--sage-dim);
+    font-size:0.75rem;
+    font-weight:600;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--text-dim);
   }
 
   footer{
-    padding:32px 0;
+    padding:30px 0;
     border-top:1px solid var(--border);
+    font-size:0.82rem;
+    color:var(--text-dim);
+  }
+  .footer-inner{
     display:flex;
     justify-content:space-between;
-    font-size:0.82rem;
-    color:var(--sage-dim);
+    align-items:center;
+    gap:16px;
+    width:100%;
   }
+  .footer-brand{ display:flex; align-items:center; gap:10px; }
+  .footer-brand .logo-mark{ width:22px; height:22px; }
 
-  /* ---------- Reveal on load (single orchestrated moment) ---------- */
+  /* ---------- Reveal on load ---------- */
   .reveal{
     opacity:0;
     transform:translateY(14px);
@@ -448,48 +609,87 @@
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
     .reveal{ animation:none; opacity:1; transform:none; }
+    *{ transition:none !important; }
   }
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:860px){
     .wrap{ padding:0 22px; }
+    .nav-inner{ padding:14px 22px; }
+    .nav-name{ display:none; }
     .hero-grid{ grid-template-columns:1fr; gap:40px; }
     .hero-stats{
       flex-direction:row;
       border-left:none;
-      border-top:1px solid var(--border);
+      border-top:3px solid var(--primary);
       padding-left:0;
-      padding-top:24px;
+      padding-top:22px;
       flex-wrap:wrap;
+      gap:28px;
     }
-    .section-head{ grid-template-columns:1fr; gap:14px; }
+    .section-head{ grid-template-columns:1fr; gap:12px; }
     .skills-grid{ grid-template-columns:1fr; }
-    .skill-col{ border-right:none; border-bottom:1px solid var(--border); }
-    .tl-item{ grid-template-columns:1fr; gap:10px; }
+    .tl-item{ grid-template-columns:1fr; gap:8px; }
     .project, .project.reverse{ grid-template-columns:1fr; }
     .project.reverse .project-visual, .project.reverse .project-text{ order:initial; }
     .contact-inner{ grid-template-columns:1fr; }
+    .footer-inner{ flex-direction:column; align-items:flex-start; gap:10px; }
+
+    .nav-right{ gap:12px; }
     .nav-links{
       position:fixed;
-      top:60px; right:0;
+      top:58px; right:0;
       background:var(--bg-alt);
       border:1px solid var(--border);
+      border-radius:0 0 0 14px;
       flex-direction:column;
-      padding:20px 28px;
+      padding:20px 26px;
       gap:18px;
       transform:translateX(110%);
       transition:transform .3s ease;
+      box-shadow:var(--shadow-lg);
     }
     .nav-links.open{ transform:translateX(0); }
     .nav-toggle{
-      display:block;
-      background:none;
-      border:none;
-      color:var(--paper);
-      font-size:1.4rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:38px; height:38px;
+      border-radius:999px;
+      background:var(--panel);
+      border:1px solid var(--border);
+      color:var(--text);
+      font-size:1.2rem;
       cursor:pointer;
     }
-    header.hero{ padding:140px 0 72px; }
+    .pdf-label{ display:none; }
+    header.hero{ padding:132px 0 68px; }
+  }
+
+  /* ---------- PRINT / PDF EXPORT ---------- */
+  @media print{
+    :root, :root[data-theme="dark"]{
+      --bg:#ffffff; --bg-alt:#ffffff; --panel:#ffffff; --border:#d9d9d9;
+      --text:#141414; --text-soft:#333333; --text-dim:#555555;
+      --primary:#c2410c; --primary-strong:#c2410c; --primary-contrast:#ffffff;
+      --secondary:#0f766e; --accent:#b45309;
+      --nav-bg:#ffffff;
+      --chart-a:#c2410c; --chart-b:#f59e0b;
+      --shadow-sm:none; --shadow-lg:none;
+    }
+    @page{ margin:14mm; }
+    body{ background:#fff; overflow:visible; }
+    nav, .nav-actions, .nav-toggle, .hero-cta, header.hero::before{ display:none !important; }
+    header.hero{ padding:0 0 20px; }
+    section{ padding:22px 0; border-top:1px solid #ddd; break-inside:avoid; }
+    .reveal{ opacity:1 !important; transform:none !important; animation:none !important; }
+    a{ color:#141414 !important; }
+    .project{ break-inside:avoid; page-break-inside:avoid; }
+    .tl-item{ break-inside:avoid; }
+    .skill-col{ break-inside:avoid; }
+    .project-visual{ box-shadow:none; border:1px solid #ddd; }
+    .project-visual.is-image{ max-height:260px; }
+    .section-head{ margin-bottom:24px; }
   }
 </style>
 </head>
@@ -497,33 +697,52 @@
 
 <nav>
   <div class="nav-inner">
-    <div class="nav-brand">
+    <a class="nav-brand" href="#top" aria-label="Azimatul Matsniya — home">
       <svg class="logo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AM monogram logo">
-        <rect x="0.5" y="0.5" width="39" height="39" rx="2" fill="none" stroke="#3D5A54"/>
-        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="500" fill="#F7F5F0">A<tspan fill="#E8A33D">M</tspan></text>
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="none" stroke="currentColor" opacity="0.3"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="600" fill="currentColor">A<tspan fill="var(--primary)">M</tspan></text>
       </svg>
-      <div class="nav-name">Azimatul Matsniya</div>
+      <span class="nav-name">Azimatul Matsniya</span>
+    </a>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="pdfBtn" type="button" title="Download this portfolio as PDF">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          <span class="pdf-label">PDF</span>
+        </button>
+        <button class="icon-btn square" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/></svg>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
     </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
   </div>
 </nav>
+
+<span id="top"></span>
 
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
       <div class="kicker">Business Intelligence Engineer</div>
-      <h1 class="hero-title">Turning raw data into visualization.</h1>
+      <h1 class="hero-title">Turning raw data into <span class="accent">visualization</span>.</h1>
       <p class="hero-role">I'm Azimatul Matsniya, a Database &amp; Business Intelligence Engineer based in Jakarta.</p>
       <p class="hero-desc">I build data pipelines, dashboards, and analytical models that help business teams read the numbers without needing to be analysts. From Oracle to Power BI, from raw queries to insight that's ready to act on.</p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">See my work</a>
-        <a href="#contact" class="btn btn-outline">Get in touch</a>
+        <button type="button" class="btn btn-outline" id="pdfBtnHero">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download PDF
+        </button>
       </div>
     </div>
     <div class="hero-stats reveal" style="animation-delay:.15s">
@@ -545,8 +764,6 @@
       <div class="section-label">Technical Skills</div>
       <h2 class="section-title">The tech stack I use to turn raw data into visualization.</h2>
     </div>
-  </div>
-  <div class="wrap">
     <div class="skills-grid">
       <div class="skill-col">
         <h3>Visualization &amp; BI</h3>
@@ -600,14 +817,14 @@
           </li>
           <li>
             <span class="skill-name">
-              <svg class="skill-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="1.5" fill="none" stroke="#C4D6D1" stroke-width="1.6"/><path d="M7 15 L10 12 L12.5 14 L17 9" fill="none" stroke="#E8A33D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="skill-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 15 L10 12 L12.5 14 L17 9" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
               SQL Query Optimization
             </span>
             <span class="skill-level">Advanced</span>
           </li>
           <li>
             <span class="skill-name">
-              <svg class="skill-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1" fill="none" stroke="#C4D6D1" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1" fill="none" stroke="#C4D6D1" stroke-width="1.6"/><rect x="8.5" y="14" width="7" height="7" rx="1" fill="none" stroke="#C4D6D1" stroke-width="1.6"/><path d="M6.5 10 V12 H17.5 V10 M12 14 V12" fill="none" stroke="#C4D6D1" stroke-width="1.4"/></svg>
+              <svg class="skill-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="8.5" y="14" width="7" height="7" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 10 V12 H17.5 V10 M12 14 V12" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
               Data Warehousing
             </span>
             <span class="skill-level">Intermediate</span>
@@ -626,7 +843,7 @@
           </li>
           <li>
             <span class="skill-name">
-              <svg class="skill-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="3" rx="1" fill="#150458"/><rect x="3" y="10.5" width="18" height="3" rx="1" fill="#150458" opacity="0.7"/><rect x="3" y="16" width="12" height="3" rx="1" fill="#150458" opacity="0.45"/></svg>
+              <svg class="skill-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="3" rx="1" fill="#7C6BF0"/><rect x="3" y="10.5" width="18" height="3" rx="1" fill="#7C6BF0" opacity="0.7"/><rect x="3" y="16" width="12" height="3" rx="1" fill="#7C6BF0" opacity="0.45"/></svg>
               Pandas / NumPy
             </span>
             <span class="skill-level">Advanced</span>
@@ -640,7 +857,7 @@
           </li>
           <li>
             <span class="skill-name">
-              <svg class="skill-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4 H20 M4 4 L11 12 L4 20 H20 M11 12 L20 20" fill="none" stroke="#C4D6D1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg class="skill-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4 H20 M4 4 L11 12 L4 20 H20 M11 12 L20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               Statistics &amp; Applied Mathematics
             </span>
             <span class="skill-level">Advanced</span>
@@ -704,14 +921,10 @@
     </div>
 
     <div class="project">
-      <div class="project-visual">
-        <div class="project-tag">Dashboard · Power BI</div>
-        <div class="mini-chart">
-          <span style="height:35%"></span><span style="height:55%"></span><span style="height:40%"></span>
-          <span style="height:70%"></span><span style="height:60%"></span><span style="height:85%"></span>
-          <span style="height:75%"></span><span style="height:95%"></span>
-        </div>
-        <div class="chart-labels"><span>Jan</span><span>Mar</span><span>May</span><span>Jul</span><span>Sep</span></div>
+      <div class="project-visual is-image">
+        <span class="project-tag">Dashboard · Power BI</span>
+        <img src="Picture/dashboard-healthcare.png" width="1232" height="685" loading="lazy"
+             alt="Power BI sales dashboard for the health sector, showing multiple report pages of sales and outreach metrics">
       </div>
       <div class="project-text">
         <div class="project-title">Sales Dashboard for the Health Sector</div>
@@ -726,14 +939,10 @@
     </div>
 
     <div class="project reverse">
-      <div class="project-visual">
-        <div class="project-tag">Dashboard · Power BI</div>
-        <div class="mini-chart">
-          <span style="height:90%"></span><span style="height:70%"></span><span style="height:50%"></span>
-          <span style="height:65%"></span><span style="height:45%"></span><span style="height:80%"></span>
-          <span style="height:60%"></span><span style="height:30%"></span>
-        </div>
-        <div class="chart-labels"><span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span></div>
+      <div class="project-visual is-image">
+        <span class="project-tag">Dashboard · Power BI</span>
+        <img src="Picture/dashboard-ngo.png" width="1398" height="783" loading="lazy"
+             alt="Power BI performance monitoring dashboard for an NGO, showing world maps and budget and progress charts for forest-conservation projects">
       </div>
       <div class="project-text">
         <div class="project-title">Performance Monitoring Dashboard for an NGO</div>
@@ -749,20 +958,21 @@
 
     <div class="project">
       <div class="project-visual">
-        <div class="project-tag">Embedded BI · Power BI</div>
+        <span class="project-tag">Proof of Concept · Power BI</span>
         <div class="mini-chart">
           <span style="height:40%"></span><span style="height:60%"></span><span style="height:55%"></span>
           <span style="height:80%"></span><span style="height:70%"></span><span style="height:90%"></span>
         </div>
-        <div class="chart-labels"><span>Q1</span><span>Q2</span><span>Q3</span></div>
+        <div class="chart-labels"><span>Idea</span><span>Mock-up</span><span>Demo</span></div>
       </div>
       <div class="project-text">
-        <div class="project-title">Embedded Dashboard for a Company Website</div>
-        <p>Built a lightweight Power BI dashboard embedded directly into a company website, making key metrics visible to visitors without opening a separate BI tool.</p>
-        <p><a href="https://www.bisolusi.com/power-bi-implementation" target="_blank" rel="noopener" style="color:var(--amber);">View the live dashboard →</a></p>
+        <div class="project-title">Proof-of-Concept Sample Dashboard</div>
+        <p>While working as a Business Intelligence consultant, I built this sample dashboard as a proof of concept &mdash; a fast, realistic mock-up that showed a client how their data could look and feel in Power BI before committing to a full build.</p>
+        <p><a class="project-link" href="https://www.bisolusi.com/power-bi-implementation" target="_blank" rel="noopener">View the sample dashboard &rarr;</a></p>
         <div class="project-meta">
           <div class="meta-item"><strong>Power BI</strong>Visualization</div>
-          <div class="meta-item"><strong>Web embed</strong>Delivery</div>
+          <div class="meta-item"><strong>Proof of concept</strong>Purpose</div>
+          <div class="meta-item"><strong>BI consulting</strong>Context</div>
         </div>
       </div>
     </div>
@@ -794,11 +1004,11 @@
 </section>
 
 <footer>
-  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
-    <div style="display:flex; align-items:center; gap:10px;">
-      <svg width="22" height="22" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AM monogram">
-        <rect x="0.5" y="0.5" width="39" height="39" rx="2" fill="none" stroke="#3D5A54"/>
-        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="500" fill="#F7F5F0">A<tspan fill="#E8A33D">M</tspan></text>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <svg class="logo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AM monogram">
+        <rect x="1" y="1" width="38" height="38" rx="9" fill="none" stroke="currentColor" opacity="0.3"/>
+        <text x="20" y="27" text-anchor="middle" font-family="Fraunces, serif" font-size="18" font-weight="600" fill="currentColor">A<tspan fill="var(--primary)">M</tspan></text>
       </svg>
       <span>© 2026 Azimatul Matsniya</span>
     </div>
@@ -807,18 +1017,45 @@
 </footer>
 
 <script>
-  const navToggle = document.getElementById('navToggle');
-  const navLinks = document.getElementById('navLinks');
-  navToggle.addEventListener('click', () => {
-    const isOpen = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', isOpen);
-  });
-  navLinks.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      navLinks.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+  (function(){
+    var root = document.documentElement;
+    var KEY = 'am-theme';
+
+    function currentTheme(){ return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; }
+
+    var themeToggle = document.getElementById('themeToggle');
+    function syncToggle(){
+      var dark = currentTheme() === 'dark';
+      themeToggle.setAttribute('aria-pressed', String(dark));
+      themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    }
+    syncToggle();
+    themeToggle.addEventListener('click', function(){
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try{ localStorage.setItem(KEY, next); }catch(e){}
+      syncToggle();
     });
-  });
+
+    function toPdf(e){ if(e) e.preventDefault(); window.print(); }
+    var pdfBtn = document.getElementById('pdfBtn');
+    var pdfBtnHero = document.getElementById('pdfBtnHero');
+    if(pdfBtn) pdfBtn.addEventListener('click', toPdf);
+    if(pdfBtnHero) pdfBtnHero.addEventListener('click', toPdf);
+
+    var navToggle = document.getElementById('navToggle');
+    var navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', function(){
+      var isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
 </script>
 
 </body>
